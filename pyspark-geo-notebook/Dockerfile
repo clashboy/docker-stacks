@@ -34,11 +34,16 @@ RUN apt-get -y update && \
 RUN $CONDA_ACTIVATE && pip install overpy --upgrade
 RUN $CONDA_ACTIVATE && pip install retrying --upgrade
 RUN $CONDA_ACTIVATE && pip install geopandas --upgrade
+# add folim and related python libs for geovisualization
+RUN $CONDA_ACTIVATE && pip install vincent --upgrade
+RUN $CONDA_ACTIVATE && pip install branca --upgrade
+RUN $CONDA_ACTIVATE && pip install folium --upgrade
 
 # Install conda packages
 RUN conda install libgfortran -y
 RUN conda install fiona -y
 RUN conda install gdal -y
+
 
 # Separate 'pip' for updating correct kernal version 
 #RUN curl -O https://bootstrap.pypa.io/get-pip.py
